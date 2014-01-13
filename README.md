@@ -21,7 +21,13 @@ Drag XHTumblrMenu.h amd XHTumblrMenu.m files to your project.
 
 No other frameworks required.
 
+## Installation
 
+CocoaPods is the recommended method of installing XHTumblrMenu, just add the following line to your Podfile:
+
+Podfile
+
+pod 'XHTumblrMenu'
 
 ## How it looks ##
 

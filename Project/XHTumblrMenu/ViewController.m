@@ -21,12 +21,27 @@
 	// Do any additional setup after loading the view, typically from a nib.
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitle:@"Show Menu" forState:UIControlStateNormal];
-    button.frame = CGRectMake((self.view.bounds.size.width - 59)/2.0, (self.view.bounds.size.height - 48)/2.0, 59, 48);
+    button.frame = CGRectMake(0, 0/2.0, 100, 48);
+    button.center = self.view.center;
     [button addTarget:self action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
 
 - (void)showMenu {
+    NSDictionary *tumblrMenuDictionary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TumblrMenuList" ofType:@"plist"]];
+    NSArray *tumblrMenuList = [tumblrMenuDictionary valueForKey:@"TumblrMenuList"];
+    
+    XHTumblrMenu *tumblrMenu = [[XHTumblrMenu alloc] init];
+    for (NSDictionary *tumblrMenuDictionary in tumblrMenuList) {
+        XHTumblrMenuItem *tumblrMenuItem = [[XHTumblrMenuItem alloc] init];
+        tumblrMenuItem.title = [tumblrMenuDictionary valueForKey:@"title"];
+        tumblrMenuItem.icon = [UIImage imageNamed:[tumblrMenuDictionary valueForKey:@"icon"]];
+        tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
+            NSLog(@"title : %@", tumblrMenuItem.title);
+        };
+        [tumblrMenu addMenuItemWithTumblrMenuItem:tumblrMenuItem];
+    }
+    [tumblrMenu show];
 }
 
 - (void)didReceiveMemoryWarning

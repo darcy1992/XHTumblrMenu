@@ -16,10 +16,10 @@
 #define XHTumblrMenuViewHorizontalMargin 10
 #define XHTumblrMenuViewRriseAnimationID @"XHTumblrMenuViewRriseAnimationID"
 #define XHTumblrMenuViewDismissAnimationID @"XHTumblrMenuViewDismissAnimationID"
-#define XHTumblrMenuViewAnimationTime 0.36
+#define XHTumblrMenuViewAnimationTime 0.37
 #define XHTumblrMenuViewAnimationInterval (XHTumblrMenuViewAnimationTime / 5)
 
-#define XHTumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:1.0]
+#define XHTumblrBlue [UIColor colorWithRed:0.019 green:0.215 blue:0.369 alpha:1.000]
 
 
 @class XHTumblrMenu;

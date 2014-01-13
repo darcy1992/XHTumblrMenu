@@ -107,12 +107,11 @@
 {
     [self dismiss:nil];
     
-    __weak typeof(tumblrMenuItemButton) weakTumblrMenuItemButton = tumblrMenuItemButton;
     __weak typeof(self) weakSelf = self;
     double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        weakTumblrMenuItemButton.selectedBlock(weakSelf, weakTumblrMenuItemButton.tumblrMenuItem);
+        tumblrMenuItemButton.tumblrMenuItem.tumblrMenuViewSelectedBlock(weakSelf, tumblrMenuItemButton.tumblrMenuItem);
     });
 }
 

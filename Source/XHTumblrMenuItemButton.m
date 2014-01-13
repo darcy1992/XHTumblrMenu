@@ -27,7 +27,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.text = tumblrMenuItem.title;
-        _tumblrMenuItem.tumblrMenuViewSelectedBlock = tumblrMenuItem.tumblrMenuViewSelectedBlock;
+        self.tumblrMenuItem = tumblrMenuItem;
         [self addSubview:_iconView];
         [self addSubview:_titleLabel];
     }

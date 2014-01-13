@@ -1,4 +1,4 @@
-![XHTumblrMenu] (https://github.com/JackTeam/XHTumblrMenu/raw/master//creensots/XHTumblrMenu.gif)
+![image](https://github.com/JackTeam/XHTumblrMenu/raw/master/creensots/XHTumblrMenu.gif)
 
 
 XHTumblrMenu
@@ -36,13 +36,16 @@ No other frameworks required.
 #import "XHTumblrMenu.h"
 
 XHTumblrMenu *tumblrMenu = [[XHTumblrMenu alloc] init];
-XHTumblrMenuItem *tumblrMenuItem = [[XHTumblrMenuItem alloc] init];
-tumblrMenuItem.title = @"title";
-tumblrMenuItem.iconImage = [UIImage imageNamed:@"title.png"];
-tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
-            NSLog(@"title : %@", tumblrMenuItem.title);
-};
-[tumblrMenu addMenuItemWithTumblrMenuItem:tumblrMenuItem];
+for (int i = 0; i < 6; i ++) {
+   XHTumblrMenuItem *tumblrMenuItem = [[XHTumblrMenuItem alloc] init];
+   tumblrMenuItem.title = [NSString stringWithFormat:@"Title%d", i];
+   tumblrMenuItem.iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"Title%d.png", i]];
+   tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
+            NSLog(@"title : %@   index : %d", tumblrMenuItem.title, tumblrMenuItem.index);
+   };
+   [tumblrMenu addMenuItemWithTumblrMenuItem:tumblrMenuItem];
+}
+
 [tumblrMenu show];
 ```
 

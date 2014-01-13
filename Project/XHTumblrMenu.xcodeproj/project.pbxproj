@@ -22,6 +22,7 @@
 		AB20A904188490FE0004615F /* post_type_bubble_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB20A8F8188490FE0004615F /* post_type_bubble_text@2x.png */; };
 		AB20A905188490FE0004615F /* post_type_bubble_video.png in Resources */ = {isa = PBXBuildFile; fileRef = AB20A8F9188490FE0004615F /* post_type_bubble_video.png */; };
 		AB20A906188490FE0004615F /* post_type_bubble_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB20A8FA188490FE0004615F /* post_type_bubble_video@2x.png */; };
+		AB20A908188491650004615F /* TumblrMenuList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB20A907188491650004615F /* TumblrMenuList.plist */; };
 		ABDB71B01884851200A1A430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71AF1884851200A1A430 /* Foundation.framework */; };
 		ABDB71B21884851200A1A430 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71B11884851200A1A430 /* CoreGraphics.framework */; };
 		ABDB71B41884851200A1A430 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71B31884851200A1A430 /* UIKit.framework */; };
@@ -67,6 +68,7 @@
 		AB20A8F8188490FE0004615F /* post_type_bubble_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "post_type_bubble_text@2x.png"; sourceTree = "<group>"; };
 		AB20A8F9188490FE0004615F /* post_type_bubble_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_type_bubble_video.png; sourceTree = "<group>"; };
 		AB20A8FA188490FE0004615F /* post_type_bubble_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "post_type_bubble_video@2x.png"; sourceTree = "<group>"; };
+		AB20A907188491650004615F /* TumblrMenuList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TumblrMenuList.plist; sourceTree = "<group>"; };
 		ABDB71AC1884851200A1A430 /* XHTumblrMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHTumblrMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDB71AF1884851200A1A430 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABDB71B11884851200A1A430 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,6 +186,7 @@
 				ABDB71BF1884851200A1A430 /* AppDelegate.m */,
 				ABDB71C71884851200A1A430 /* ViewController.h */,
 				ABDB71C81884851200A1A430 /* ViewController.m */,
+				AB20A907188491650004615F /* TumblrMenuList.plist */,
 				ABDB71CA1884851200A1A430 /* Images.xcassets */,
 				ABDB71B61884851200A1A430 /* Supporting Files */,
 			);
@@ -302,6 +305,7 @@
 				AB20A8FC188490FE0004615F /* post_type_bubble_chat@2x.png in Resources */,
 				AB20A8FD188490FE0004615F /* post_type_bubble_link.png in Resources */,
 				AB20A906188490FE0004615F /* post_type_bubble_video@2x.png in Resources */,
+				AB20A908188491650004615F /* TumblrMenuList.plist in Resources */,
 				AB20A900188490FE0004615F /* post_type_bubble_photo@2x.png in Resources */,
 				AB20A904188490FE0004615F /* post_type_bubble_text@2x.png in Resources */,
 				AB20A903188490FE0004615F /* post_type_bubble_text.png in Resources */,

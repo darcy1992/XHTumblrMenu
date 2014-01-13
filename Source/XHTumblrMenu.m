@@ -152,7 +152,7 @@
         positionAnimation.fromValue = [NSValue valueWithCGPoint:fromPosition];
         positionAnimation.toValue = [NSValue valueWithCGPoint:toPosition];
         positionAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.45f :1.2f :0.75f :1.0f];
-        positionAnimation.duration = ;
+        positionAnimation.duration = self.tumblrMenuViewShowItemAnimationTime;
         positionAnimation.beginTime = [tumblrMenuItemButton.layer convertTime:CACurrentMediaTime() fromLayer:nil] + delayInSeconds;
         [positionAnimation setValue:[NSNumber numberWithUnsignedInteger:index] forKey:XHTumblrMenuViewRriseAnimationID];
         positionAnimation.delegate = self;
@@ -185,7 +185,7 @@
         positionAnimation.fromValue = [NSValue valueWithCGPoint:fromPosition];
         positionAnimation.toValue = [NSValue valueWithCGPoint:toPosition];
         positionAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.3 :0.5f :1.0f :1.0f];
-        positionAnimation.duration = XHTumblrMenuViewAnimationTime;
+        positionAnimation.duration = self.tumblrMenuViewShowItemAnimationTime;
         positionAnimation.beginTime = [button.layer convertTime:CACurrentMediaTime() fromLayer:nil] + delayInSeconds;
         [positionAnimation setValue:[NSNumber numberWithUnsignedInteger:index] forKey:XHTumblrMenuViewDismissAnimationID];
         positionAnimation.delegate = self;

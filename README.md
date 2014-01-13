@@ -1,5 +1,4 @@
-![XHTumblrMenu] (https://github.com/JackTeam/XHTumblrMenu/master/raw/Screensots/XHTumblrMenu.gif)
-
+![XHTumblrMenu] (https://github.com/JackTeam/XHTumblrMenu/raw/master//creensots/XHTumblrMenu.gif)
 
 
 XHTumblrMenu
@@ -18,13 +17,6 @@ You can add as many items as you want, the XHTumblrMenu will layout them automat
 
 XHTumblrMenu requires Xcode 5, targeting either iOS 5.0 and above, ARC-enabled.
 
-
-## How to use ##
-	
-Drag XHTumblrMenu.h amd XHTumblrMenu.m files to your project. 
-
-No other frameworks required.
-
 ## Installation
 
 CocoaPods is the recommended method of installing XHTumblrMenu, just add the following line to your Podfile:
@@ -32,6 +24,26 @@ CocoaPods is the recommended method of installing XHTumblrMenu, just add the fol
 Podfile
 ```ruby
 pod 'XHTumblrMenu'
+```
+
+## How to use ##
+	
+Drag XHTumblrMenu.h amd XHTumblrMenu.m files to your project. 
+
+No other frameworks required.
+
+```objective-c
+#import "XHTumblrMenu.h"
+
+XHTumblrMenu *tumblrMenu = [[XHTumblrMenu alloc] init];
+XHTumblrMenuItem *tumblrMenuItem = [[XHTumblrMenuItem alloc] init];
+tumblrMenuItem.title = @"title";
+tumblrMenuItem.iconImage = [UIImage imageNamed:@"title.png"];
+tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
+            NSLog(@"title : %@", tumblrMenuItem.title);
+};
+[tumblrMenu addMenuItemWithTumblrMenuItem:tumblrMenuItem];
+[tumblrMenu show];
 ```
 
 ## Lincense ##

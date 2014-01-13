@@ -18,6 +18,8 @@
 
 @implementation XHTumblrMenu
 
+#pragma mark - life cycle
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -36,6 +38,15 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    for (NSUInteger i = 0; i < _items.count; i++) {
+        XHTumblrMenuItemButton *button = _items[i];
+        button.frame = [self frameForButtonAtIndex:i];
+    }
+}
+
 - (void)_dissDealloc {
     if (self.backgroundImgView)
         self.backgroundImgView = nil;
@@ -50,6 +61,8 @@
     [self _dissDealloc];
 }
 
+#pragma mark - Public api
+
 - (void)addMenuItemWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem {
     XHTumblrMenuItemButton *tumblrMenuItemButton = [[XHTumblrMenuItemButton alloc] initWithTumblrMenuItem:tumblrMenuItem];
     [tumblrMenuItemButton addTarget:self action:@selector(tumblrMenuItemButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -57,8 +70,31 @@
     [_items addObject:tumblrMenuItemButton];
 }
 
-- (CGRect)frameForButtonAtIndex:(NSUInteger)index
-{
+- (void)show {
+    UIViewController *appRootViewController;
+    
+    UIWindow *window;
+    window = [UIApplication sharedApplication].keyWindow;
+    appRootViewController = window.rootViewController;
+    
+    UIViewController *topViewController = appRootViewController;
+    while (topViewController.presentedViewController != nil) {
+        topViewController = topViewController.presentedViewController;
+    }
+    
+    if ([topViewController.view viewWithTag:XHTumblrMenuViewTag]) {
+        [[topViewController.view viewWithTag:XHTumblrMenuViewTag] removeFromSuperview];
+    }
+    
+    self.frame = topViewController.view.bounds;
+    [topViewController.view addSubview:self];
+    
+    [self riseAnimation];
+}
+
+#pragma mark - previte help method
+
+- (CGRect)frameForButtonAtIndex:(NSUInteger)index {
     NSUInteger columnCount = 3;
     NSUInteger columnIndex =  index % columnCount;
     
@@ -76,64 +112,7 @@
     
     
     return CGRectMake(offsetX, offsetY, XHTumblrMenuViewImageHeight, (XHTumblrMenuViewImageHeight+XHTumblrMenuViewTitleHeight));
-    
 }
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    for (NSUInteger i = 0; i < _items.count; i++) {
-        XHTumblrMenuItemButton *button = _items[i];
-        button.frame = [self frameForButtonAtIndex:i];
-    }
-    
-}
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    if ([gestureRecognizer.view isKindOfClass:[XHTumblrMenuItemButton class]]) {
-        return NO;
-    }
-    
-    CGPoint location = [gestureRecognizer locationInView:self];
-    for (UIView* subview in _items) {
-        if (CGRectContainsPoint(subview.frame, location)) {
-            return NO;
-        }
-    }
-    
-    return YES;
-}
-
-- (void)dismiss:(id)sender
-{
-    [self dropAnimation];
-    double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self _dissDealloc];
-        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.alpha = 0.;
-        } completion:^(BOOL finished) {
-            [self removeFromSuperview];
-        }];
-    });
-}
-
-
-- (void)tumblrMenuItemButtonTapped:(XHTumblrMenuItemButton *)tumblrMenuItemButton
-{
-    [self dismiss:nil];
-    
-    __weak typeof(self) weakSelf = self;
-    double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        tumblrMenuItemButton.tumblrMenuItem.tumblrMenuViewSelectedBlock(weakSelf, tumblrMenuItemButton.tumblrMenuItem);
-    });
-}
-
 
 - (void)riseAnimation {
     NSUInteger columnCount = 3;
@@ -206,6 +185,52 @@
     
 }
 
+- (void)dismiss:(id)sender {
+    [self dropAnimation];
+    double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self _dissDealloc];
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.alpha = 0.;
+        } completion:^(BOOL finished) {
+            [self removeFromSuperview];
+        }];
+    });
+}
+
+#pragma mark - TumblrMenuItemButton Action
+
+- (void)tumblrMenuItemButtonTapped:(XHTumblrMenuItemButton *)tumblrMenuItemButton {
+    [self dismiss:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        tumblrMenuItemButton.tumblrMenuItem.tumblrMenuViewSelectedBlock(weakSelf, tumblrMenuItemButton.tumblrMenuItem);
+    });
+}
+
+#pragma mark - UIGestureRecognizer delegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer.view isKindOfClass:[XHTumblrMenuItemButton class]]) {
+        return NO;
+    }
+    
+    CGPoint location = [gestureRecognizer locationInView:self];
+    for (UIView* subview in _items) {
+        if (CGRectContainsPoint(subview.frame, location)) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+#pragma mark - CAAnimation delegate
+
 - (void)animationDidStart:(CAAnimation *)anim {
     NSUInteger columnCount = 3;
     if([anim valueForKey:XHTumblrMenuViewRriseAnimationID]) {
@@ -228,33 +253,6 @@
         
         view.layer.position = toPosition;
     }
-}
-
-- (void)show {
-    
-    UIViewController *appRootViewController;
-    UIWindow *window;
-    
-    window = [UIApplication sharedApplication].keyWindow;
-    
-    
-    appRootViewController = window.rootViewController;
-    
-    
-    
-    UIViewController *topViewController = appRootViewController;
-    while (topViewController.presentedViewController != nil) {
-        topViewController = topViewController.presentedViewController;
-    }
-    
-    if ([topViewController.view viewWithTag:XHTumblrMenuViewTag]) {
-        [[topViewController.view viewWithTag:XHTumblrMenuViewTag] removeFromSuperview];
-    }
-    
-    self.frame = topViewController.view.bounds;
-    [topViewController.view addSubview:self];
-    
-    [self riseAnimation];
 }
 
 @end

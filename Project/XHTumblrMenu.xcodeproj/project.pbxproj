@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB20A8E6188487D20004615F /* XHTumblrMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20A8E5188487D20004615F /* XHTumblrMenu.m */; };
+		AB20A8E9188488660004615F /* XHTumblrMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20A8E8188488660004615F /* XHTumblrMenuItem.m */; };
 		ABDB71B01884851200A1A430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71AF1884851200A1A430 /* Foundation.framework */; };
 		ABDB71B21884851200A1A430 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71B11884851200A1A430 /* CoreGraphics.framework */; };
 		ABDB71B41884851200A1A430 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDB71B31884851200A1A430 /* UIKit.framework */; };
@@ -38,6 +39,9 @@
 /* Begin PBXFileReference section */
 		AB20A8E4188487D20004615F /* XHTumblrMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTumblrMenu.h; sourceTree = "<group>"; };
 		AB20A8E5188487D20004615F /* XHTumblrMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTumblrMenu.m; sourceTree = "<group>"; };
+		AB20A8E7188488660004615F /* XHTumblrMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTumblrMenuItem.h; sourceTree = "<group>"; };
+		AB20A8E8188488660004615F /* XHTumblrMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTumblrMenuItem.m; sourceTree = "<group>"; };
+		AB20A8EA188488AC0004615F /* XHTumblrMenuHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTumblrMenuHeader.h; sourceTree = "<group>"; };
 		ABDB71AC1884851200A1A430 /* XHTumblrMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHTumblrMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDB71AF1884851200A1A430 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABDB71B11884851200A1A430 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +93,9 @@
 			children = (
 				AB20A8E4188487D20004615F /* XHTumblrMenu.h */,
 				AB20A8E5188487D20004615F /* XHTumblrMenu.m */,
+				AB20A8E7188488660004615F /* XHTumblrMenuItem.h */,
+				AB20A8E8188488660004615F /* XHTumblrMenuItem.m */,
+				AB20A8EA188488AC0004615F /* XHTumblrMenuHeader.h */,
 			);
 			name = Source;
 			path = ../Source;
@@ -268,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB20A8E6188487D20004615F /* XHTumblrMenu.m in Sources */,
+				AB20A8E9188488660004615F /* XHTumblrMenuItem.m in Sources */,
 				ABDB71C91884851200A1A430 /* ViewController.m in Sources */,
 				ABDB71C01884851200A1A430 /* AppDelegate.m in Sources */,
 				ABDB71BC1884851200A1A430 /* main.m in Sources */,

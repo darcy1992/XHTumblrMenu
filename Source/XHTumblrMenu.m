@@ -12,7 +12,6 @@
 @interface XHTumblrMenu () {
     NSMutableArray *_items;
 }
-@property (nonatomic, strong) UIImageView *backgroundImgView;
 
 @end
 
@@ -32,6 +31,7 @@
 - (void)_setup {
     self.dissmissAnimationType = kXHFade;
     self.dissMissDuration = 0.1;
+    self.tumblrMenuViewShowItemAnimationTime = XHTumblrMenuViewAnimationTime;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
     tap.delegate = self;
@@ -152,7 +152,7 @@
         positionAnimation.fromValue = [NSValue valueWithCGPoint:fromPosition];
         positionAnimation.toValue = [NSValue valueWithCGPoint:toPosition];
         positionAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.45f :1.2f :0.75f :1.0f];
-        positionAnimation.duration = XHTumblrMenuViewAnimationTime;
+        positionAnimation.duration = ;
         positionAnimation.beginTime = [tumblrMenuItemButton.layer convertTime:CACurrentMediaTime() fromLayer:nil] + delayInSeconds;
         [positionAnimation setValue:[NSNumber numberWithUnsignedInteger:index] forKey:XHTumblrMenuViewRriseAnimationID];
         positionAnimation.delegate = self;

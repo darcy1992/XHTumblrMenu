@@ -1,3 +1,7 @@
+![XHTumblrMenu] (https://github.com/JackTeam/XHTumblrMenu/master/raw/Screensots/XHTumblrMenu.gif)
+
+
+
 XHTumblrMenu
 ============
 
@@ -29,10 +33,6 @@ Podfile
 ```ruby
 pod 'XHTumblrMenu'
 ```
-
-## How it looks ##
-
-![XHTumblrMenu] (https://github.com/JackTeam/XHTumblrMenu/master/raw/Screensots/XHTumblrMenu.gif)
 
 ## Lincense ##
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XHTumblrMenuItem.h"
+#import "XHTumblrMenuHeader.h"
 
 @interface XHTumblrMenu : UIView <UIGestureRecognizerDelegate>
 @property (nonatomic, readonly)UIImageView *backgroundImgView;

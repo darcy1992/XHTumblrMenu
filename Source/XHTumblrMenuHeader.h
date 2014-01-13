@@ -15,7 +15,7 @@
 #define XHTumblrMenuViewVerticalPadding 10
 #define XHTumblrMenuViewHorizontalMargin 10
 #define XHTumblrMenuViewRriseAnimationID @"XHTumblrMenuViewRriseAnimationID"
-#define CHTumblrMenuViewDismissAnimationID @"XHTumblrMenuViewDismissAnimationID"
+#define XHTumblrMenuViewDismissAnimationID @"XHTumblrMenuViewDismissAnimationID"
 #define XHTumblrMenuViewAnimationTime 0.36
 #define XHTumblrMenuViewAnimationInterval (XHTumblrMenuViewAnimationTime / 5)
 

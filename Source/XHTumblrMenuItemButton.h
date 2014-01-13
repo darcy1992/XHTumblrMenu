@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XHTumblrMenuItem.h"
 
 @interface XHTumblrMenuItemButton : UIControl
-
+- (id)initWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem;
 @end

@@ -10,6 +10,14 @@
 
 @implementation XHTumblrMenuItemButton
 
+- (id)initWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

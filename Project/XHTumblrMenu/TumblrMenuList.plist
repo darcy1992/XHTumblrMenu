@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>TumblrMenuList</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>Text</string>
+			<key>icon</key>
+			<string>post_type_bubble_text</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Photo</string>
+			<key>icon</key>
+			<string>post_type_bubble_photo</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Quote</string>
+			<key>icon</key>
+			<string>post_type_bubble_quote</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Link</string>
+			<key>icon</key>
+			<string>post_type_bubble_link</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Chat</string>
+			<key>icon</key>
+			<string>post_type_bubble_chat</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Video</string>
+			<key>icon</key>
+			<string>post_type_bubble_video</string>
+		</dict>
+	</array>
+</dict>
 </plist>

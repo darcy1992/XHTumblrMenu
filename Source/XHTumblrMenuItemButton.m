@@ -9,8 +9,8 @@
 #import "XHTumblrMenuItemButton.h"
 
 @interface XHTumblrMenuItemButton () {
-    UIImageView *iconView_;
-    UILabel *titleLabel_;
+    UIImageView *_iconView;
+    UILabel *_titleLabel;
 }
 
 @end
@@ -20,16 +20,16 @@
 - (id)initWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem {
     self = [super init];
     if (self) {
-        iconView_ = [UIImageView new];
-        iconView_.image = tumblrMenuItem.icon;
-        titleLabel_ = [UILabel new];
-        titleLabel_.textAlignment = NSTextAlignmentCenter;
-        titleLabel_.backgroundColor = [UIColor clearColor];
-        titleLabel_.textColor = [UIColor whiteColor];
-        titleLabel_.text = tumblrMenuItem.title;
+        _iconView = [UIImageView new];
+        _iconView.image = tumblrMenuItem.icon;
+        _titleLabel = [UILabel new];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.text = tumblrMenuItem.title;
         _selectedBlock = tumblrMenuItem.tumblrMenuViewSelectedBlock;
-        [self addSubview:iconView_];
-        [self addSubview:titleLabel_];
+        [self addSubview:_iconView];
+        [self addSubview:_titleLabel];
     }
     return self;
 }
@@ -37,8 +37,8 @@
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    iconView_.frame = CGRectMake(0, 0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight);
-    titleLabel_.frame = CGRectMake(0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight, XHTumblrMenuViewTitleHeight);
+    _iconView.frame = CGRectMake(0, 0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight);
+    _titleLabel.frame = CGRectMake(0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight, XHTumblrMenuViewTitleHeight);
 }
 
 /*

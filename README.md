@@ -1,4 +1,4 @@
-![image](https://github.com/JackTeam/XHScreenCaptureSDKSimple/raw/master/Screenshots/XHTumblrMenu.gif)
+![image](https://github.com/JackTeam/XHTumblrMenu/raw/master/Screenshots/XHTumblrMenu.gif)
 
 
 XHTumblrMenu

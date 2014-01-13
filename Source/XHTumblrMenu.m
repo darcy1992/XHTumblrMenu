@@ -20,22 +20,31 @@
 
 #pragma mark - life cycle
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
-        ges.delegate = self;
-        [self addGestureRecognizer:ges];
-        self.backgroundColor = [UIColor clearColor];
-        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _backgroundImgView.backgroundColor = XHTumblrBlue;
-        _backgroundImgView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [self addSubview:self.backgroundImgView];
-        _items = [[NSMutableArray alloc] initWithCapacity:6];
+        [self _setup];
     }
     return self;
+}
+
+- (void)_setup {
+    self.dissmissAnimationType = kXHFade;
+    self.dissMissDuration = 0.1;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
+    tap.delegate = self;
+    [self addGestureRecognizer:tap];
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    _backgroundImgView = [[UIImageView alloc] initWithFrame:self.bounds];
+    _backgroundImgView.backgroundColor = XHTumblrBlue;
+    _backgroundImgView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self addSubview:self.backgroundImgView];
+    
+    _items = [[NSMutableArray alloc] initWithCapacity:6];
 }
 
 - (void)layoutSubviews {
@@ -191,12 +200,32 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self _dissDealloc];
-        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.alpha = 0.;
-        } completion:^(BOOL finished) {
-            [self removeFromSuperview];
-        }];
+        [self _dissMissAnimation];
     });
+}
+
+- (void)_dissMissAnimation {
+    switch (self.dissmissAnimationType) {
+        case kXHFade: {
+            [UIView animateWithDuration:self.dissMissDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.alpha = 0.;
+            } completion:^(BOOL finished) {
+                [self removeFromSuperview];
+            }];
+            break;
+        }
+        case kXHZoom: {
+            [UIView animateWithDuration:self.dissMissDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.transform = CGAffineTransformMakeScale(0.0, 0.0);
+            } completion:^(BOOL finished) {
+                [self removeFromSuperview];
+            }];
+            break;
+        }
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark - TumblrMenuItemButton Action

@@ -27,4 +27,9 @@
 
 typedef void (^XHTumblrMenuViewSelectedBlock)(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem);
 
+typedef NS_ENUM(NSInteger, XHTumblrMenuDissmissAnimationType) {
+    kXHFade = 0,
+    kXHZoom
+};
+
 #endif

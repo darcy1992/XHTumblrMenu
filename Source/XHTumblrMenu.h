@@ -12,6 +12,8 @@
 
 @interface XHTumblrMenu : UIView <UIGestureRecognizerDelegate>
 @property (nonatomic, strong, readonly) UIImageView *backgroundImgView;
+@property (nonatomic, assign) XHTumblrMenuDissmissAnimationType dissmissAnimationType; // default is kXHFade
+@property (nonatomic, assign) NSTimeInterval dissMissDuration; // default is 0.1;
 - (void)addMenuItemWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem;
 - (void)show;
 @end

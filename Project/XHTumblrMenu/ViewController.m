@@ -37,7 +37,7 @@
         tumblrMenuItem.title = [tumblrMenuDictionary valueForKey:@"title"];
         tumblrMenuItem.iconImage = [UIImage imageNamed:[tumblrMenuDictionary valueForKey:@"icon"]];
         tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
-            NSLog(@"title : %@", tumblrMenuItem.title);
+            NSLog(@"title : %@   index : %d", tumblrMenuItem.title, tumblrMenuItem.index);
         };
         [tumblrMenu addMenuItemWithTumblrMenuItem:tumblrMenuItem];
     }

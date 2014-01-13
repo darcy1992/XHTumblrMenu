@@ -10,6 +10,7 @@
 #import "XHTumblrMenuHeader.h"
 
 @interface XHTumblrMenuItem : NSObject
+@property (nonatomic, assign) NSInteger index;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIImage *iconImage;
 @property (nonatomic, copy) XHTumblrMenuViewSelectedBlock tumblrMenuViewSelectedBlock;

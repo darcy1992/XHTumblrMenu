@@ -129,8 +129,9 @@
     
     
     for (NSUInteger index = 0; index < _items.count; index++) {
-        XHTumblrMenuItemButton *button = _items[index];
-        button.layer.opacity = 0;
+        XHTumblrMenuItemButton *tumblrMenuItemButton = _items[index];
+        tumblrMenuItemButton.tumblrMenuItem.index = index;
+        tumblrMenuItemButton.layer.opacity = 0;
         CGRect frame = [self frameForButtonAtIndex:index];
         NSUInteger rowIndex = index / columnCount;
         NSUInteger columnIndex = index % columnCount;
@@ -152,11 +153,11 @@
         positionAnimation.toValue = [NSValue valueWithCGPoint:toPosition];
         positionAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.45f :1.2f :0.75f :1.0f];
         positionAnimation.duration = XHTumblrMenuViewAnimationTime;
-        positionAnimation.beginTime = [button.layer convertTime:CACurrentMediaTime() fromLayer:nil] + delayInSeconds;
+        positionAnimation.beginTime = [tumblrMenuItemButton.layer convertTime:CACurrentMediaTime() fromLayer:nil] + delayInSeconds;
         [positionAnimation setValue:[NSNumber numberWithUnsignedInteger:index] forKey:XHTumblrMenuViewRriseAnimationID];
         positionAnimation.delegate = self;
         
-        [button.layer addAnimation:positionAnimation forKey:@"riseAnimation"];
+        [tumblrMenuItemButton.layer addAnimation:positionAnimation forKey:@"riseAnimation"];
     }
 }
 

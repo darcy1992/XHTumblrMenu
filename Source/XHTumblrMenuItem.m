@@ -10,4 +10,10 @@
 
 @implementation XHTumblrMenuItem
 
+- (void)dealloc {
+    self.title = nil;
+    self.iconImage = nil;
+    self.tumblrMenuViewSelectedBlock = nil;
+}
+
 @end

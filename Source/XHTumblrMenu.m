@@ -10,9 +10,9 @@
 #import "XHTumblrMenuItemButton.h"
 
 @interface XHTumblrMenu () {
-    UIImageView *_backgroundView;
     NSMutableArray *_items;
 }
+@property (nonatomic, strong) UIImageView *backgroundImgView;
 
 @end
 
@@ -27,13 +27,27 @@
         ges.delegate = self;
         [self addGestureRecognizer:ges];
         self.backgroundColor = [UIColor clearColor];
-        _backgroundView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _backgroundView.backgroundColor = XHTumblrBlue;
-        _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [self addSubview:_backgroundView];
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _backgroundImgView.backgroundColor = XHTumblrBlue;
+        _backgroundImgView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [self addSubview:self.backgroundImgView];
         _items = [[NSMutableArray alloc] initWithCapacity:6];
     }
     return self;
+}
+
+- (void)_dissDealloc {
+    if (self.backgroundImgView)
+        self.backgroundImgView = nil;
+    if (_items) {
+        [_items makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [_items removeAllObjects];
+        _items = nil;
+    }
+}
+
+- (void)dealloc {
+    [self _dissDealloc];
 }
 
 - (void)addMenuItemWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem {
@@ -98,7 +112,12 @@
     double delayInSeconds = XHTumblrMenuViewAnimationTime  + XHTumblrMenuViewAnimationInterval * (_items.count + 1);
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self removeFromSuperview];
+        [self _dissDealloc];
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.alpha = 0.;
+        } completion:^(BOOL finished) {
+            [self removeFromSuperview];
+        }];
     });
 }
 

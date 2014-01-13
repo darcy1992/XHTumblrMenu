@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         _iconView = [UIImageView new];
-        _iconView.image = tumblrMenuItem.icon;
+        _iconView.image = tumblrMenuItem.iconImage;
         _titleLabel = [UILabel new];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.backgroundColor = [UIColor clearColor];
@@ -39,6 +39,13 @@
     [super setFrame:frame];
     _iconView.frame = CGRectMake(0, 0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight);
     _titleLabel.frame = CGRectMake(0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight, XHTumblrMenuViewTitleHeight);
+}
+
+- (void)dealloc {
+    _iconView = nil;
+    _titleLabel = nil;
+    
+    self.tumblrMenuItem = nil;
 }
 
 /*

@@ -35,7 +35,7 @@
     for (NSDictionary *tumblrMenuDictionary in tumblrMenuList) {
         XHTumblrMenuItem *tumblrMenuItem = [[XHTumblrMenuItem alloc] init];
         tumblrMenuItem.title = [tumblrMenuDictionary valueForKey:@"title"];
-        tumblrMenuItem.icon = [UIImage imageNamed:[tumblrMenuDictionary valueForKey:@"icon"]];
+        tumblrMenuItem.iconImage = [UIImage imageNamed:[tumblrMenuDictionary valueForKey:@"icon"]];
         tumblrMenuItem.tumblrMenuViewSelectedBlock = ^(XHTumblrMenu *tumblrMenu, XHTumblrMenuItem *tumblrMenuItem) {
             NSLog(@"title : %@", tumblrMenuItem.title);
         };

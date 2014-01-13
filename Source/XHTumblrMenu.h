@@ -11,7 +11,7 @@
 #import "XHTumblrMenuHeader.h"
 
 @interface XHTumblrMenu : UIView <UIGestureRecognizerDelegate>
-@property (nonatomic, readonly)UIImageView *backgroundImgView;
+@property (nonatomic, strong, readonly) UIImageView *backgroundImgView;
 - (void)addMenuItemWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem;
 - (void)show;
 @end

@@ -11,6 +11,6 @@
 
 @interface XHTumblrMenuItem : NSObject
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) UIImage *icon;
+@property (nonatomic, strong) UIImage *iconImage;
 @property (nonatomic, copy) XHTumblrMenuViewSelectedBlock tumblrMenuViewSelectedBlock;
 @end

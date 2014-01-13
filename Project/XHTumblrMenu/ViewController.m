@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "XHTumblrMenu.h"
 
 @interface ViewController ()
 
@@ -26,7 +27,6 @@
 }
 
 - (void)showMenu {
-    
 }
 
 - (void)didReceiveMemoryWarning

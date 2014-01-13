@@ -26,8 +26,9 @@ No other frameworks required.
 CocoaPods is the recommended method of installing XHTumblrMenu, just add the following line to your Podfile:
 
 Podfile
-
+```ruby
 pod 'XHTumblrMenu'
+```
 
 ## How it looks ##
 

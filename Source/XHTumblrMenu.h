@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XHTumblrMenuItem.h"
 
-@interface XHTumblrMenu : UIView
-
+@interface XHTumblrMenu : UIView <UIGestureRecognizerDelegate>
+@property (nonatomic, readonly)UIImageView *backgroundImgView;
+- (void)addMenuItemWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem;
+- (void)show;
 @end

@@ -8,23 +8,37 @@
 
 #import "XHTumblrMenuItemButton.h"
 
+@interface XHTumblrMenuItemButton () {
+    UIImageView *iconView_;
+    UILabel *titleLabel_;
+}
+
+@end
+
 @implementation XHTumblrMenuItemButton
 
 - (id)initWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem {
     self = [super init];
     if (self) {
-        
+        iconView_ = [UIImageView new];
+        iconView_.image = tumblrMenuItem.icon;
+        titleLabel_ = [UILabel new];
+        titleLabel_.textAlignment = NSTextAlignmentCenter;
+        titleLabel_.backgroundColor = [UIColor clearColor];
+        titleLabel_.textColor = [UIColor whiteColor];
+        titleLabel_.text = tumblrMenuItem.title;
+        _selectedBlock = tumblrMenuItem.tumblrMenuViewSelectedBlock;
+        [self addSubview:iconView_];
+        [self addSubview:titleLabel_];
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (void)setFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [super setFrame:frame];
+    iconView_.frame = CGRectMake(0, 0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight);
+    titleLabel_.frame = CGRectMake(0, XHTumblrMenuViewImageHeight, XHTumblrMenuViewImageHeight, XHTumblrMenuViewTitleHeight);
 }
 
 /*

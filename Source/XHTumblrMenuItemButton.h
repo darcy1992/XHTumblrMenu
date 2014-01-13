@@ -11,4 +11,5 @@
 
 @interface XHTumblrMenuItemButton : UIControl
 - (id)initWithTumblrMenuItem:(XHTumblrMenuItem *)tumblrMenuItem;
+@property (nonatomic, copy) XHTumblrMenuViewSelectedBlock selectedBlock;
 @end

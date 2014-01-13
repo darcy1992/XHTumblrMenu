@@ -9,6 +9,19 @@
 #ifndef XHTumblrMenu_XHTumblrMenuHeader_h
 #define XHTumblrMenu_XHTumblrMenuHeader_h
 
+#define XHTumblrMenuViewTag 1999
+#define XHTumblrMenuViewImageHeight 90
+#define XHTumblrMenuViewTitleHeight 20
+#define XHTumblrMenuViewVerticalPadding 10
+#define XHTumblrMenuViewHorizontalMargin 10
+#define XHTumblrMenuViewRriseAnimationID @"XHTumblrMenuViewRriseAnimationID"
+#define CHTumblrMenuViewDismissAnimationID @"XHTumblrMenuViewDismissAnimationID"
+#define XHTumblrMenuViewAnimationTime 0.36
+#define XHTumblrMenuViewAnimationInterval (XHTumblrMenuViewAnimationTime / 5)
+
+#define XHTumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:1.0]
+
+
 @class XHTumblrMenu;
 @class XHTumblrMenuItem;
 
